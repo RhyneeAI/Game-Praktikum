@@ -1,0 +1,63 @@
+# ========== Unity Generated ==========
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# ========== Memory / Cache ==========
+
+MemoryCaptures/
+*.pidb
+*.svd
+*.pdb
+
+# ========== IDE ==========
+
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+
+# ========== OS ==========
+
+.DS_Store
+Thumbs.db
+
+# ========== Unity Cache ==========
+
+*.apk
+*.aab
+*.unitypackage
+
+# ========== Addressables / Cache ==========
+
+ServerData/
+StreamingAssets/aa/
+
+# ========== Rider / VS ==========
+
+*.DotSettings.user
+
+# ========== Crash ==========
+
+sysinfo.txt
+
+# ========== Auto Generated ==========
+
+ExportedObj/
+.consulo/
+
+# ========== Misc ==========
+
+*.log
+*.tmp
+*.bak
+*.swp
