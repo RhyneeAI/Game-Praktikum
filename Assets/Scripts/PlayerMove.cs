@@ -1,29 +1,36 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.InputSystem;
 
-public class PlayerMove: MonoBehaviour
+[RequireComponent(typeof(PlayerInput))]
+public class PlayerMove : Move
 {
-    public float speed = 2.5f;
-    void Start() 
+    private Camera cam;
+
+    protected override void Awake()
     {
-        transform.position = new Vector3(1, 1, 0);  
+        base.Awake(); 
+        cam = Camera.main;
     }
 
-    void Update() 
+    private void OnMove(InputValue value)
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        currentInput = value.Get<Vector2>();
+    }
 
-        Vector2 direction = new Vector2(x, y).normalized;
+    private void Update()
+    {
+        RotateToCursor();
+    }
 
-        // Move
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+    private void RotateToCursor()
+    {
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        Vector3 worldPos = cam.ScreenToWorldPoint(mousePos);
 
-        // Rotate (kalau ada input)
-        if (direction != Vector2.zero)
-        {
-            transform.up = -direction;
-        }
+        Vector2 direction = worldPos - transform.position;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, angle + 75f);
     }
 }
